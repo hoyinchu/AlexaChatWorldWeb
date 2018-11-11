@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../../common/style.css';
+import './bubble.css';
 
 const evenBubbleStyle = {
     minHeight: "60px",
@@ -34,9 +35,9 @@ class Bubble extends Component {
         let bubbleOrder = this.props.index % 2 === 0 ? "even-bubble" : "odd-bubble";
         let bubbleStyle = bubbleOrder === "even-bubble" ? evenBubbleStyle : oddBubbleStyle;
         return (
-            <div className="row">
-                <div className={bubbleOrder} style={bubbleStyle}>
-                    {this.props.message.text}
+            <div className="row" data-aos="fade-up">
+                <div className={bubbleOrder} style={bubbleStyle} >
+                    {this.props.message}
                 </div>
                 <div style={{clear: "both"}}></div>
             </div>
@@ -46,7 +47,7 @@ class Bubble extends Component {
 
 export default Bubble;
 Bubble.propTypes = {
-    message: PropTypes.object,
+    message: PropTypes.string,
     index: PropTypes.number
 }
 

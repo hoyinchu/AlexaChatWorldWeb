@@ -1,83 +1,137 @@
 import React, { Component } from 'react';
 import Bubble from './Bubble.jsx';
 import UniqueId from 'react-html-id';
-import Common from '../../common/common.jsx';
+import Chart from '../Chart/Chart';
+import AOS from 'aos';
 
 const chatStyle = {
-    backgroundColor: "whitesmoke",
+    backgroundColor: "#686868",
     borderBottomLeftRadius: "15px",
     borderBottomRightRadius: "15px",
     maxWidth: "1200px",
+    width: "100%",
     margin: "auto"
 };
 
 const sampleMessages = {
     "messsages": [
         {
-            "text": "Hello from Wentworth!"
+            "text": "MacOS"
         },
         {
-            "text": "Hello from Northeastern!"
+            "text": "Windows"
         },
         {
-            "text": "Alexa Chat World is amazing!"
+            "text": "Linux"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "MacOS"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "Windows"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "Linux"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "MacOS"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "Windows"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "Linux"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "MacOS"
         },
         {
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ut imperdiet dui, sed ultricies risus. Curabitur purus odio, fringilla eget lacinia non, finibus at nisi. Praesent vitae elit sed ex cursus placerat. Fusce velit elit, sodales vitae semper eu, aliquam in ligula. Aliquam aliquet iaculis ligula vitae aliquet. Sed sit amet luctus sem. Pellentesque sagittis sed ligula in tempor. Mauris placerat magna at commodo imperdiet. Pellentesque luctus, mauris sit amet ultrices feugiat, odio erat congue ante, ut rhoncus arcu ipsum ut mauris. Donec non risus eu sem tempus efficitur non ac massa. Mauris quis metus elementum, tincidunt tortor et, ullamcorper augue. Donec urna magna, bibendum at elementum quis, pharetra ac orci. Duis luctus tellus eget velit gravida aliquet."
+            "text": "Windows"
         },
         {
-            "text": "This is so sad Alexa play despacito"
+            "text": "Linux"
         }
     ]
 }
+
+var Airtable = require('airtable');
+Airtable.configure({
+    endpointUrl: 'https://api.airtable.com',
+    apiKey: 'keyLfYC16laU773La'
+});
+var base = Airtable.base('appXMZRuL9POsuuix');
 
 class Chat extends Component {
     constructor(props) {
         super(props);
         UniqueId.enableUniqueIds(this);
         this.state = {
-            messages: sampleMessages.messsages,
+            messages: [],
             messageLimit: 50,
             isLoaded: false
         }
-        console.log(sampleMessages)
     }
-    // componentDidMount() {
-    //     fetch("../../json/sampleChat.json")
-    //         .then((result) => {
-    //             console.log("result fetched")
-    //             console.log("results are " + JSON.stringify(result))
-    //             this.setState({
-    //                 isLoaded: true,
-    //                 message: result.messages
-    //             });
-    //         })
-    // }
+    componentWillMount() {
+        console.log("component mounting");
+        AOS.init();
+        let self = this;
+        let messagesArray = []
+        base('Table 1').select({
+            view: "Grid view"
+        }).eachPage(function page(records, fetchNextPage) {
+            // This function (`page`) will get called for each page of records.
+            records.forEach(function(record) {
+                let curRecord = record.get('operating_systems');
+                console.log('Retrieved', curRecord);
+                if (curRecord !== undefined) {
+                    messagesArray.push(record.get('operating_systems'))
+                }
+            });
+            // To fetch the next page of records, call `fetchNextPage`.
+            // If there are more records, `page` will get called again.
+            // If there are no more records, `done` will get called.
+            fetchNextPage();
+        }, function done(err) {
+            if (err) { console.error(err); return; }
+            self.setState({
+                isLoaded: true,
+                messages: messagesArray
+            })
+        });
+
+    }
+    getOsVotes() {
+        let windowCount = 0;
+        let macCount = 0;
+        let linuxCount = 0;
+        for (let i = 0; i < this.state.messages.length; i++) {
+            let curMessage = this.state.messages[i];
+            if (curMessage.toLowerCase() === "windows" ||
+                curMessage.toLowerCase() === "pc") {
+                windowCount++;
+            }
+            else if (curMessage.toLowerCase() === "macos" ||
+                    curMessage.toLowerCase() === "apple" ||
+                    curMessage.toLowerCase() === "macintosh") {
+                macCount++;
+            }
+            else if (curMessage.toLowerCase() === "linux") {
+                linuxCount++;
+            }
+        }
+        return [windowCount, macCount, linuxCount]
+    }
     render() {
+        console.log("Component Rendering");
+        if (!this.state.isLoaded) {
+            return <div><img src="../../common/loading.gif"/></div>
+        }
         return (
-            <div style={chatStyle}>
-                {this.state.messages.map((message, index) => { return <Bubble key={this.nextUniqueId()} message={message} index={index} />; })}
+            <div>
+                <div style={chatStyle}>
+                    {this.state.messages.map((message, index) => { return <Bubble key={this.nextUniqueId()} message={message} index={index} />; })}
+                </div>
+                <Chart data={this.getOsVotes()} />
             </div>
         );
     }

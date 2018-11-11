@@ -5,9 +5,9 @@ const titleStyle = {
     display: 'flex',
     justifyContent: 'center',
     border: '2px solid black',
-    borderTopLeftRadius: '15px',
-    borderTopRightRadius: '15px',
-    maxWidth: '1200px',
+    // borderTopLeftRadius: '15px',
+    // borderTopRightRadius: '15px',
+    width: "100%",
     margin: 'auto',
     backgroundColor: Common.COLORS.alexaBlack,
 }
