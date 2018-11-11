@@ -5,7 +5,7 @@ import Chart from '../Chart/Chart';
 import AOS from 'aos';
 
 const chatStyle = {
-    backgroundColor: "#686868",
+    backgroundColor: "gray",
     borderBottomLeftRadius: "15px",
     borderBottomRightRadius: "15px",
     maxWidth: "1200px",
